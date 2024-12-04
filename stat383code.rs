@@ -69,10 +69,10 @@ KaMala<-2*h+j+.5*i+n+.5*o
 KaFEMala<-2*n+h+p+.5*o+.5*i
 OtherM<-7
 OtherF<-5
-ToMtal<-.5091*(TruMp+KaMala+OtherM)
-ToFtal<-.4909*(TruFEMp+KaFEMala+OtherF)
-ToKal<-.5091*KaMala+.4909*KaFEMala
-ToTral<-.5091*TruMp+.4909*TruFEMp
+ToMtal<-.5091*(TruMp+KaMala+OtherM)*2
+ToFtal<-.4909*(TruFEMp+KaFEMala+OtherF)*2
+ToKal<-2 * (.5091*KaMala+.4909*KaFEMala)
+ToTral<-2 * (.5091*TruMp+.4909*TruFEMp)
 Total<-ToMtal+ToFtal
 p1<-ToTral/Total
 p2<-ToKal/Total
@@ -81,8 +81,8 @@ p22<-17502/42939
 p3<-p1-p2
 p33<-p11-p22
 #Splitting up coding the Test Statistic into 2 lines to prevent bugs
-botTS<-sqrt(p33*(1-p33)/(TruMp+KaMala+OtherM+TruFEMp+KaFEMala+OtherF))
+botTS<-sqrt(p33*(1-p33)/(Total))
 TS<-((p3)-(p33))/botTS
-p_value <- 2 * (1 - pt(abs(TS), TruMp+KaMala+OtherM+TruFEMp+KaFEMala+OtherF - 1))
+p_value <- 2 * (1 - pt(abs(TS), Total - 1))
 print(p_value)
 print(TS)
