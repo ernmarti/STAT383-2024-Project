@@ -1,10 +1,10 @@
 graphics.off() # clear all previous plots
 rm(list=ls()) # clear the environment from previous codes
-cat("\014") # clear the console 
+cat("\014") # clear the console
 
 
 library(readxl)
-df <- read_excel("/Users/emart/Downloads/consolidated_data.xlsx") 
+df <- read_excel("/Users/Trip/Documents/Clarkson/STAT383ProbabilityAndStatistics/Final Project/consolidated_data.xlsx")
 View(df)
 head(df)
 
@@ -26,7 +26,7 @@ print(sum(df$vote=="Kamala Harris")/nrow(df))
 print(sum(df$vote=="Other")/nrow(df))
 
 # Subsetting a dataset
-# 
+#
 df_males <- df[df$gender==1,]
 
 df_females <- df[df$gender==0,]
@@ -69,13 +69,13 @@ KaMala<-2*h+j+.5*i+n+.5*o
 KaFEMala<-2*n+h+p+.5*o+.5*i
 OtherM<-7
 OtherF<-5
-ToMtal<-.5091*(TruMp+KaMala+OtherM)*2
-ToFtal<-.4909*(TruFEMp+KaFEMala+OtherF)*2
-ToKal<-2 * (.5091*KaMala+.4909*KaFEMala)
-ToTral<-2 * (.5091*TruMp+.4909*TruFEMp)
+ToMtal<-(TruMp+KaMala+OtherM)
+ToFtal<-(TruFEMp+KaFEMala+OtherF)
+ToKal<- (.5091*KaMala/ToMtal+.4909*KaFEMala/ToFtal)
+ToTral<- (.5091*TruMp/ToMtal+.4909*TruFEMp/ToFtal)
 Total<-ToMtal+ToFtal
-p1<-ToTral/Total
-p2<-ToKal/Total
+p1<-ToTral
+p2<-ToKal
 p11<-25210/42939
 p22<-17502/42939
 p3<-p1-p2
